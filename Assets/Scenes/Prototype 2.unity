@@ -535,7 +535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3bd8a450fcb589542a7843ea7bda2ee6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3bd8a450fcb589542a7843ea7bda2ee6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -628,6 +628,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 20
   XRange: 20
+  ZRangeTop: 16
+  ZRangeBottom: -1
   FoodPrefab: {fileID: 2680459487291923961, guid: 25f027895e4a4c54fb98284a3071f30e, type: 3}
 --- !u!1 &1590138454
 GameObject:

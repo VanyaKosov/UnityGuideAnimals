@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 
     public float XRange;
 
+    public float ZRangeTop;
+
+    public float ZRangeBottom;
+
     public GameObject FoodPrefab;
 
     void Start()
@@ -24,22 +28,19 @@ public class PlayerController : MonoBehaviour
             Instantiate(FoodPrefab, transform.position, FoodPrefab.transform.rotation);
         }
 
+        var verticalInput = Input.GetAxis("Vertical");
         var horizontalInput = Input.GetAxis("Horizontal");
 
-        var pos = transform.position + Vector3.right * horizontalInput * Speed * Time.deltaTime;
+        var controllerPosition = new Vector3(horizontalInput, transform.position.y, verticalInput);
+        var lookAt = controllerPosition + transform.position;
+        transform.LookAt(lookAt);
+
+        var pos = transform.position + controllerPosition * Speed * Time.deltaTime;
         pos.x = Mathf.Max(-XRange, pos.x);
         pos.x = Mathf.Min(XRange, pos.x);
-        
+        pos.z = Mathf.Max(ZRangeBottom, pos.z);
+        pos.z = Mathf.Min(ZRangeTop, pos.z);
+
         transform.position = pos;
-
-        /*transform.Translate(Vector3.right * horizontalInput * Speed * Time.deltaTime);
-
-        transform.position = new Vector3(Mathf.Min(transform.position.x, 20), 0, 0);
-        transform.position = new Vector3(Mathf.Max(transform.position.x, -20), 0, 0);*/
-
-        /*if (transform.position.x > 20)
-        {
-            transform.position = new Vector3(20, 0, 0);
-        }*/
     }
 }
