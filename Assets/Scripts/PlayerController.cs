@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Instantiate(FoodPrefab, transform.position, FoodPrefab.transform.rotation);
+            Instantiate(FoodPrefab, transform.position, transform.rotation);
         }
 
         var verticalInput = Input.GetAxis("Vertical");
