@@ -496,9 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2ee04cb1227eb42ab19a4ddde3376e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnXRange: 20
-  SpawnZ: 20
-  SpawnInterval: 2
+  SpawnInterval: 0.5
   AnimalsPrefabs:
   - {fileID: 5789274900267017117, guid: c689550608ee8a44fab89cb3885e246e, type: 3}
   - {fileID: 3292171938182562841, guid: 34e0de0b988670e4d9cf10624a0e2088, type: 3}
@@ -627,9 +625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  XRange: 20
-  ZRangeTop: 16
-  ZRangeBottom: -1
   FoodPrefab: {fileID: 2680459487291923961, guid: 25f027895e4a4c54fb98284a3071f30e, type: 3}
 --- !u!1 &1590138454
 GameObject:

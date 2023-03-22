@@ -1,13 +1,10 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float SpawnXRange;
-
-    public float SpawnZ;
-
     public float SpawnInterval;
 
     public GameObject[] AnimalsPrefabs;
@@ -19,8 +16,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomAnimal()
     {
-        var spawnX = Random.Range(-SpawnXRange, SpawnXRange);
-        var spawnPos = new Vector3(spawnX, 0, SpawnZ);
+        var spawnX = Random.Range(Settings.Field.Left, Settings.Field.Right);
+        var spawnPos = new Vector3(spawnX, 0, Settings.World.Top);
 
         var index = Random.Range(0, AnimalsPrefabs.Length);
         var animal = AnimalsPrefabs[index];

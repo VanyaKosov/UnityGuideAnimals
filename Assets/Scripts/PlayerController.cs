@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +6,9 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float Speed;
 
-    public float XRange;
-
-    public float ZRangeTop;
-
-    public float ZRangeBottom;
-
     public GameObject FoodPrefab;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -36,10 +25,10 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(lookAt);
 
         var pos = transform.position + controllerPosition * Speed * Time.deltaTime;
-        pos.x = Mathf.Max(-XRange, pos.x);
-        pos.x = Mathf.Min(XRange, pos.x);
-        pos.z = Mathf.Max(ZRangeBottom, pos.z);
-        pos.z = Mathf.Min(ZRangeTop, pos.z);
+        pos.x = Mathf.Max(Settings.Field.Left, pos.x);
+        pos.x = Mathf.Min(Settings.Field.Right, pos.x);
+        pos.z = Mathf.Max(Settings.Field.Bottom, pos.z);
+        pos.z = Mathf.Min(Settings.Field.Top, pos.z);
 
         transform.position = pos;
     }

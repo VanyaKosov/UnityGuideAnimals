@@ -1,28 +1,22 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-
-    public float BorderZTop;
-
-    public float BorderZBottom;
-
-    public float BorderXLeft;
-
-    public float BorderXRight;
-
     void Update()
     {
+        var border = Settings.World;
+
         var z = transform.position.z;
         var x = transform.position.x;
-        if (z > BorderZTop || z < BorderZBottom || x < BorderXLeft || x > BorderXRight)
+        if (z > border.Top || z < border.Bottom || x < border.Left || x > border.Right)
         {
             Destroy(gameObject);
         }
 
-        if (z < BorderZBottom)
+        if (z < border.Bottom)
         {
             Debug.Log("Game Over!");
         }
