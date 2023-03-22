@@ -181,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BorderZTop: 20
   BorderZBottom: -10
+  BorderXLeft: -30
+  BorderXRight: 30
 --- !u!65 &3632530326863190257
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,10 +9,15 @@ public class Destroy : MonoBehaviour
 
     public float BorderZBottom;
 
+    public float BorderXLeft;
+
+    public float BorderXRight;
+
     void Update()
     {
         var z = transform.position.z;
-        if (z > BorderZTop || z < BorderZBottom)
+        var x = transform.position.x;
+        if (z > BorderZTop || z < BorderZBottom || x < BorderXLeft || x > BorderXRight)
         {
             Destroy(gameObject);
         }
