@@ -7,6 +7,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject[] AnimalsPrefabs;
 
+    public PlayerState PlayerState;
+
     void Start()
     {
         InvokeRepeating("SpawnRandomAnimal", SpawnInterval, SpawnInterval);
@@ -38,13 +40,13 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
 
-        //var spawnX = Random.Range(field.Left, field.Right);
-        //var spawnPos = new Vector3(spawnX, 0, Settings.World.Top);
-
         var index = Random.Range(0, AnimalsPrefabs.Length);
         var animal = AnimalsPrefabs[index];
 
         var spawnedAnimal = Instantiate(animal, spawnPos, animal.transform.rotation);
         spawnedAnimal.transform.Rotate(Vector3.up, rotatation);
+
+        var animalDestroyer = spawnedAnimal.GetComponent<DestroyOnCollision>();
+        animalDestroyer.PlayerState = PlayerState;
     }
 }
