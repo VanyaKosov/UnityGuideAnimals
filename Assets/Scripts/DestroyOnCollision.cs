@@ -6,9 +6,15 @@ public class DestroyOnCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
-
-        PlayerState.IncrementScore();
+        if (other.gameObject == PlayerState.gameObject)
+        {
+            PlayerState.DecrementLives();
+        }
+        else
+        {
+            PlayerState.IncrementScore();
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }

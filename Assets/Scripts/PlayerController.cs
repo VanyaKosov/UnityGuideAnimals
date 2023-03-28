@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject FoodPrefab;
 
+    public float ProjectileShift;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Instantiate(FoodPrefab, transform.position, transform.rotation);
+            var shift = transform.forward * ProjectileShift;
+            Instantiate(FoodPrefab, transform.position + shift, transform.rotation);
         }
 
         var verticalInput = Input.GetAxis("Vertical");
