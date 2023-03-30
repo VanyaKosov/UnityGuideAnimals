@@ -7,6 +7,7 @@ public class PlayerState : MonoBehaviour
 {
     public TextMeshProUGUI Lives;
     public TextMeshProUGUI Score;
+    public GameObject DeathMessage;
 
     private int _lives = 3;
     private int _score;
@@ -15,6 +16,10 @@ public class PlayerState : MonoBehaviour
     {
         _lives--;
         ShowLives();
+        if (_lives == 0)
+        {
+            EndGame();
+        }
     }
 
     internal void IncrementScore()
@@ -37,5 +42,24 @@ public class PlayerState : MonoBehaviour
     {
         ShowLives();
         ShowScore();
+    }
+
+    private void EndGame()
+    {
+        EndGameOfEntities<Move>();
+        EndGameOfEntities<Animator>();
+        EndGameOfEntities<SpawnManager>();
+        EndGameOfEntities<PlayerController>();
+
+        DeathMessage.SetActive(true);
+    }
+
+    private void EndGameOfEntities<T>() where T : Behaviour
+    {
+        var objects = FindObjectsOfType<T>();
+        foreach (var obj in objects)
+        {
+            obj.enabled = false;
+        }
     }
 }

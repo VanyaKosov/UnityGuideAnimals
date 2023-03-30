@@ -9,9 +9,14 @@ public class SpawnManager : MonoBehaviour
 
     public PlayerState PlayerState;
 
-    void Start()
+    void OnEnable()
     {
         InvokeRepeating("SpawnRandomAnimal", SpawnInterval, SpawnInterval);
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke();
     }
 
     void SpawnRandomAnimal()
