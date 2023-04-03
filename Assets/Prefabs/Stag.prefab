@@ -883,6 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8842af7c2934ed640aba6ec3a172c995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Points: 150
   Health: {fileID: 391630100739594443}
 --- !u!1 &1756630994664284980
 GameObject:

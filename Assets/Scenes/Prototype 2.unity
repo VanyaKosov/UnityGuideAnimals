@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2ee04cb1227eb42ab19a4ddde3376e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnInterval: 0.5
+  SpawnInterval: 0.25
   AnimalsPrefabs:
   - {fileID: 5789274900267017117, guid: c689550608ee8a44fab89cb3885e246e, type: 3}
   - {fileID: 3292171938182562841, guid: 34e0de0b988670e4d9cf10624a0e2088, type: 3}

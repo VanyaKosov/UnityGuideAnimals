@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DestroyOnCollision : MonoBehaviour
 {
+    public int Points;
+
     public Health Health;
 
     internal PlayerState PlayerState;
@@ -15,7 +17,7 @@ public class DestroyOnCollision : MonoBehaviour
         }
         if (Health.Reduce())
         {
-            PlayerState.IncrementScore();
+            PlayerState.IncrementScore(Points);
             Destroy(gameObject);
         }
         Destroy(other.gameObject);

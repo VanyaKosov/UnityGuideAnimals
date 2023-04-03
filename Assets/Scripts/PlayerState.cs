@@ -22,9 +22,9 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    internal void IncrementScore()
+    internal void IncrementScore(int points)
     {
-        _score += 100;
+        _score += points;
         ShowScore();
     }
 
