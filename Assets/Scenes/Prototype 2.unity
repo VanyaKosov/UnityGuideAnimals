@@ -866,6 +866,7 @@ MonoBehaviour:
   Speed: 10
   FoodPrefab: {fileID: 2680459487291923961, guid: 25f027895e4a4c54fb98284a3071f30e, type: 3}
   ProjectileShift: 2
+  Camera: {fileID: 534669904}
 --- !u!114 &1002917072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,7 +1369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28321788, y: 0}
   m_AnchorMax: {x: 1, y: 0.7104476}
-  m_AnchoredPosition: {x: -206.85, y: 76.994934}
+  m_AnchoredPosition: {x: -206.85004, y: 76.994934}
   m_SizeDelta: {x: 443.49994, y: -332.38986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967201409
