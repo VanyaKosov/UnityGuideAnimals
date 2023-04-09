@@ -1,61 +1,6 @@
 using Assets.Scripts;
 using UnityEngine;
 
-internal interface IControls
-{
-    bool IsFirePressed();
-    Vector3 ControlsPosition(Vector3 playerPos);
-}
-
-internal class ControllerControls : IControls
-{
-    public Vector3 ControlsPosition(Vector3 playerPos)
-    {
-        var verticalInput = Input.GetAxis("Vertical");
-        var horizontalInput = Input.GetAxis("Horizontal");
-
-        return new Vector3(horizontalInput, playerPos.y, verticalInput);
-    }
-
-    public bool IsFirePressed()
-    {
-        return Input.GetKeyDown(KeyCode.Joystick1Button0);
-    }
-}
-
-internal class MouseControls : IControls
-{
-    private readonly Camera _camera;
-
-    public MouseControls(Camera camera)
-    {
-        _camera = camera;
-    }
-
-    public Vector3 ControlsPosition(Vector3 playerPos)
-    {
-        if (!Input.GetKey(KeyCode.Mouse0))
-        {
-            return new Vector3(0, playerPos.y, 0);
-        }
-
-        var lookAt = _camera.ScreenToWorldPoint(Input.mousePosition) - playerPos;
-        lookAt.y = playerPos.y;
-
-        if (lookAt.sqrMagnitude < 0.2)
-        {
-            return new Vector3(0, playerPos.y, 0);
-        }
-
-        return lookAt.normalized;
-    }
-
-    public bool IsFirePressed()
-    {
-        return Input.GetKeyDown(KeyCode.Mouse1);
-    }
-}
-
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
@@ -66,23 +11,45 @@ public class PlayerController : MonoBehaviour
 
     public Camera Camera;
 
-    //private IControls _controls = new ControllerControls();
-    private IControls _controls;
+    private int _currentControls;
+
+    private Controls[] _controls;
 
     void Start()
     {
-        _controls = new MouseControls(Camera);
+        _controls = new Controls[]
+        {
+            new ControllerControls(),
+            new MouseControls(Camera)
+        };
+    }
+
+    private void SwitchControls()
+    {
+        if (_controls[_currentControls].IsActive) return;
+        for (var i = 0; i < _controls.Length; i++)
+        {
+            if (_controls[i].IsActive)
+            {
+                _currentControls = i;
+                return;
+            }
+        }
     }
 
     void Update()
     {
-        if (_controls.IsFirePressed())
+        SwitchControls();
+
+        var controls = _controls[_currentControls];
+
+        if (controls.IsFirePressed())
         {
             var shift = transform.forward * ProjectileShift;
             Instantiate(FoodPrefab, transform.position + shift, transform.rotation);
         }
 
-        var controlsPosition = _controls.ControlsPosition(transform.position);
+        var controlsPosition = controls.ControlsPosition(transform.position);
 
         var lookAt = controlsPosition + transform.position;
         transform.LookAt(lookAt);
