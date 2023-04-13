@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
+    private const int LIVES = 3;
+
     public TextMeshProUGUI Lives;
     public TextMeshProUGUI Score;
     public GameObject DeathMessage;
 
-    private int _lives = 3;
+    private int _lives = LIVES;
     private int _score;
+
+    internal void ResetCounters()
+    {
+        _lives = LIVES;
+        _score = 0;
+
+        ShowLives();
+        ShowScore();
+    }
 
     internal void DecrementLives()
     {
