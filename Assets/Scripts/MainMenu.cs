@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
 
     public SpawnManager SpawnManager;
 
+    private void OnEnable()
+    {
+        GameCanvas.enabled = false;
+    }
+
     private void StartGame(float interval)
     {
         SpawnManager.SpawnInterval = interval;
@@ -36,10 +41,5 @@ public class MainMenu : MonoBehaviour
     public void SoulsLike()
     {
         StartGame(0.2f);
-    }
-
-    void Start()
-    {
-
     }
 }
