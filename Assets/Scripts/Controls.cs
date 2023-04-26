@@ -17,6 +17,25 @@ namespace Assets.Scripts
         public abstract Vector3 ControlsPosition(Vector3 playerPos);
     }
 
+    internal class KeyboardControls : Controls
+    {
+        public override Vector3 ControlsPosition(Vector3 playerPos)
+        {
+            var verticalInput = Input.GetAxis("Vertical");
+            var horizontalInput = Input.GetAxis("Horizontal");
+
+            var direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
+            direction.y = playerPos.y;
+
+            return direction;
+        }
+
+        public override bool IsFirePressed()
+        {
+            return Input.GetKeyDown(KeyCode.Space);
+        }
+    }
+
     internal class ControllerControls : Controls
     {
         public override Vector3 ControlsPosition(Vector3 playerPos)

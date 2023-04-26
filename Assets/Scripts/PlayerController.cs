@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         _controls = new Controls[]
         {
+            new KeyboardControls(),
             new ControllerControls(),
             new MouseControls(Camera)
         };
